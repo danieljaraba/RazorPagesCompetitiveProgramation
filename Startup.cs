@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using RazorPagesCompetitiveProgramation.Data;
 
 namespace RazorPagesCompetitiveProgramation
 {
@@ -24,6 +26,9 @@ namespace RazorPagesCompetitiveProgramation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<RazorPagesCompetitiveProgramationContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("RazorPagesCompetitiveProgramationContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
